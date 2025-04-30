@@ -30,8 +30,20 @@ const CertificateOfRegistration = () => {
           console.log("Fetched Data:", response.data); 
           setData(response.data);
           
-  
-  
+  console.log("All employee IDs in data:", 
+            response.data.map(item => item.employeeID || "undefined"));
+          
+          console.log("Employee Number from token:", employeeNum);
+          console.log("Employee Number type:", typeof employeeNum);
+        
+          const filteredData = response.data.filter((item) => {
+            console.log("Comparing:", item.employeeID, employeeNum);
+            console.log("Types:", typeof item.employeeID, typeof employeeNum);
+            return String(item.employeeID) === String(employeeNum);
+          });
+          
+          console.log("Filtered Data:", filteredData);
+            
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -325,6 +337,7 @@ const CertificateOfRegistration = () => {
                   <input
                     type="text"
                     value={studentData.student_no || ""}
+                      readOnly
                     style={{
                       fontFamily: "Arial",
                       color: "black",
@@ -371,6 +384,7 @@ const CertificateOfRegistration = () => {
                   <input
                     type="text"
                     value={studentData.college ||""}
+                      readOnly
                     style={{
                       color: "black",
                       width: "98%",
@@ -419,6 +433,7 @@ const CertificateOfRegistration = () => {
                       <input
                         type="text"
                         value={studentData.name || ""}
+                          raedOnly
                         style={{
                           color: "black",
                           width: "98%",
@@ -464,6 +479,7 @@ const CertificateOfRegistration = () => {
                       <input
                         type="text"
                         value={studentData.program || ""}
+                          raedOnly
                         style={{
                           color: "black",
                           width: "98%",
@@ -513,6 +529,7 @@ const CertificateOfRegistration = () => {
                     <input
                       type="text"
                       value={studentData.gender || ""}
+                        raedOnly
                       style={{
                         color: "black",
                         width: "98%",
@@ -583,6 +600,7 @@ const CertificateOfRegistration = () => {
                     <input
                       type="text"
                       value={studentData.curriculum || ""}
+                        readOnly
                       style={{
                         color: "black",
                         fontFamily: 'Arial, sans-serif',
@@ -633,6 +651,7 @@ const CertificateOfRegistration = () => {
                     <input
                       type="text"
                       value={studentData.age || ""}
+                        readOnly
                       style={{
                         color: "black",
                         width: "98%",
@@ -679,6 +698,7 @@ const CertificateOfRegistration = () => {
                     <input
                       type="text"
                       value={studentData.year_level || ""}
+                        raedOnly
                       style={{
                         fontFamily: 'Arial, sans-serif',
                         fontSize: '12px',
@@ -726,6 +746,7 @@ const CertificateOfRegistration = () => {
                     <input
                       type="text"
                       value={studentData.scholarship_discount || ""}
+                        readOnly
                       style={{
                         color: "black",
                         width: "100%",
